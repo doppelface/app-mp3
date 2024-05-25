@@ -1,0 +1,63 @@
+plugins {
+    id 'org.springframework.boot' version '3.2.4'
+    id 'java'
+}
+
+bootJar {
+    mainClass = 'org.krechko.songService.Main'
+}
+
+subprojects {
+    apply plugin: 'java'
+    apply plugin: 'java-library'
+    apply plugin: 'io.spring.dependency-management'
+    apply plugin: 'org.springframework.boot'
+
+    group = 'org.krechko'
+    version = '1.0-SNAPSHOT'
+    sourceCompatibility = '17'
+
+    tasks.withType(JavaCompile).configureEach {
+        options.compilerArgs << "-parameters"
+    }
+
+    base {
+        archivesName.set("songService")
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    ext {
+        mapstructVersion = '1.5.5.Final'
+        lombokVersion = '1.18.30'
+        springBootVersion = '3.2.4'
+        hibernateJpaModelgen = '6.4.4.Final'
+        postgresqlDriverVersion = '42.7.2'
+    }
+
+    dependencies {
+        testImplementation platform('org.junit:junit-bom:5.9.1')
+        testImplementation 'org.junit.jupiter:junit-jupiter'
+
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-data-jpa', version: springBootVersion
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-web', version: springBootVersion
+        implementation group: 'org.springframework.boot', name: 'spring-boot-starter-validation', version: springBootVersion
+
+        implementation group: 'org.postgresql', name: 'postgresql', version: postgresqlDriverVersion
+
+        implementation group: 'org.mapstruct', name: 'mapstruct', version: mapstructVersion
+        implementation group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+
+        implementation group: 'org.hibernate.validator', name: 'hibernate-validator-annotation-processor', version: '8.0.1.Final'
+        implementation group: 'org.hibernate', name: 'hibernate-jpamodelgen', version: hibernateJpaModelgen
+
+
+        annotationProcessor group: 'org.projectlombok', name: 'lombok', version: lombokVersion
+        annotationProcessor group: 'org.hibernate', name: 'hibernate-jpamodelgen', version: hibernateJpaModelgen
+        annotationProcessor group: 'org.mapstruct', name: 'mapstruct-processor', version: mapstructVersion
+    }
+
+}
+
