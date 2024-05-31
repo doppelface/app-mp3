@@ -21,12 +21,12 @@ subprojects {
         options.compilerArgs << "-parameters"
     }
 
-    base {
-        archivesName.set("songService")
-    }
-
     repositories {
         mavenCentral()
+    }
+
+    base {
+        archivesName.set("songService")
     }
 
     ext {
