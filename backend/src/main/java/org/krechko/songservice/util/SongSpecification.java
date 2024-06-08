@@ -11,7 +11,7 @@ import org.springframework.data.jpa.domain.Specification;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.krechko.songservice.repository.model.metamodel.Song_.ARTISTNAME;
+import static org.krechko.songservice.repository.model.metamodel.Song_.ARTIST;
 import static org.krechko.songservice.repository.model.metamodel.Song_.TITLE;
 
 @RequiredArgsConstructor
@@ -31,7 +31,7 @@ public class SongSpecification implements Specification<Song> {
 
         if (searchCriteria.getArtist() != null && !searchCriteria.getArtist().isBlank()) {
             predicates.add(
-                    criteriaBuilder.like(criteriaBuilder.lower(root.get(ARTISTNAME)),
+                    criteriaBuilder.like(criteriaBuilder.lower(root.get(ARTIST)),
                     "%" + searchCriteria.getArtist().toLowerCase() + "%"));
         }
 

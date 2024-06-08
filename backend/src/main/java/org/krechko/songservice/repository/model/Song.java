@@ -25,6 +25,6 @@ public class Song {
     @Column(name = "title")
     private String title;
 
-    @Column(name = "artist_name")
-    private String artistName;
+    @Column(name = "artist")
+    private String artist;
 }

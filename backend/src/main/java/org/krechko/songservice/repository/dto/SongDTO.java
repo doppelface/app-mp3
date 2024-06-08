@@ -12,11 +12,11 @@ import lombok.NoArgsConstructor;
 public class SongDTO {
     private Long id;
 
-    @NotBlank(message = "Title cannot be blank")
-    @Size(min = 2, max = 50, message = "Title must be between 2 and 50 characters")
+    @NotBlank(message = "Title can't be blank")
+    @Size(min = 1, max = 50, message = "Title must be between 1 and 50 characters")
     private String title;
 
     @NotBlank(message = "Name can't be blank")
-    @Size(min = 2, max = 50, message = "Name must be between 2 and 50 characters")
-    private String artistName;
+    @Size(min = 1, max = 50, message = "Name must be between 1 and 50 characters")
+    private String artist;
 }

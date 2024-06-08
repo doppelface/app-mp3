@@ -42,7 +42,7 @@ public class SongServiceImpl implements SongService {
         return songs.map(songMapper::songToSongDTO);
     }
 
-    public Song ifSongExists(Long id) {
+    private Song ifSongExists(Long id) {
         return songRepository
                 .findById(id)
                 .orElseThrow(() -> new SongNotFoundException("Song with id: " +id + " not found"));

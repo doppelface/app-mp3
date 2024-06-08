@@ -4,7 +4,7 @@ plugins {
 }
 
 bootJar {
-    mainClass = 'org.krechko.songService.Main'
+    mainClass = 'org.krechko.songservice.Main'
 }
 
 subprojects {

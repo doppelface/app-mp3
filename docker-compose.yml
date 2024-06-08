@@ -62,22 +62,21 @@ services:
       - kafka
       - song-service
     networks:
-      - app-network
+      - app-mp3
 
-    file-service:
-      build:
-        context: .
-        dockerfile: Dockerfile
-      environment:
-        AWS_ACCESS_KEY_ID: ${AWS_ACCESS_KEY_ID}
-        AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
-        AWS_REGION: eu-north-1
-        S3_BUCKET_NAME: mp3-access-s3-bucket
-        KAFKA_BOOTSTRAP_SERVERS: kafka:9092
-      depends_on:
-        - kafka
-      networks:
-        - app-network
+  file-service:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      AWS_ACCESS_KEY_ID: ${AWS_S3_ACCESS_KEY}
+      AWS_SECRET_ACCESS_KEY: ${AWS_S3_SECRET_KEY}
+      S3_BUCKET_NAME: ${AWS_S3_BUCKET}
+      KAFKA_BOOTSTRAP_SERVERS: kafka:9092
+    depends_on:
+      - kafka
+    networks:
+      - app-mp3
 
 networks:
   app-mp3:

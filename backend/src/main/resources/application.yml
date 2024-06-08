@@ -1,17 +1,5 @@
-spring:
-  datasource:
-    url: jdbc:postgresql://localhost:5432/mp3player
-    username: postgres
-    password: postgres
-  jpa:
-    hibernate:
-      ddl-auto: update
 server:
   port: 8080
 
-logging:
-  level:
-    web: debug
-    org.hibernate.sql: debug
 
 

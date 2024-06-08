@@ -1,4 +1,4 @@
-package org.krechko.songservice.controller;
+package org.krechko.songservice.handler;
 
 import org.krechko.songservice.exception.SongNotFoundException;
 import org.krechko.songservice.exception.ErrorResponse;
